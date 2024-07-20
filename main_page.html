@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Motive of the Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        .option {
+            margin-top: 20px;
+        }
+        .option h2 {
+            color: #333;
+        }
+        .option p {
+            color: #666;
+        }
+        .option ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .option li {
+            margin-bottom: 10px;
+        }
+        .option li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .option li a:hover {
+            text-decoration: underline;
+        }
+        /* Style for commodity box */
+        .commodity-box {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none; /* Hide by default */
+            position: relative;
+        }
+        .commodity-box h3 {
+            color: #333;
+        }
+        .commodity-box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .commodity-box li {
+            margin-bottom: 10px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+            color: #888;
+        }
+        .close-btn:hover {
+            color: #333;
+        }
+        /* Style for donation box */
+        .donation-box {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none; /* Hide by default */
+        }
+        .donation-box h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .donation-box label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .donation-box select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .donate-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .donate-btn:hover {
+            background-color: #45a049;
+        }
+        /* Style for message box */
+        .message-box {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none; /* Hide by default */
+            text-align: center;
+        }
+        .message-box h3 {
+            color: #155724;
+            margin-bottom: 10px;
+        }
+        /* Style for donated list */
+        .donated-list {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .donated-list h3 {
+            color: #721c24;
+            margin-bottom: 10px;
+        }
+        .donated-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .donated-list li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ration Distribution System: Empowering Communities</h1>
+    <p>
+        The main motive of this project is to create a transparent and efficient system for distributing government-provided commodities to individuals through ration cards. By digitizing the process and implementing QR code technology, we aim to provide easy access to information about available commodities and facilitate online donations. Through this system, rural area residents can easily identify and avail donated commodities, promoting fairness and inclusivity in distribution.
+    </p>
+
+    <div class="option">
+        <h2>Commodity Information</h2>
+        <p>Users can view available commodities and distribution details.</p>
+        <ul>
+            <li><a href="#" onclick="showCommodityBox()">View Available Commodities</a></li>
+            <li><a href="#">Distribution Details</a></li>
+        </ul>
+    </div>
+
+    <!-- Commodity box -->
+    <div class="commodity-box" id="commodityBox">
+        <span class="close-btn" onclick="closeCommodityBox()">x</span>
+        <h3>Available Commodities</h3>
+        <ul>
+            <li>Rice - 5 kg</li>
+            <li>Wheat - 2 kg</li>
+            <li>Sugar - 1 kg</li>
+            <li>Salt - 1 kg</li>
+            <li>Dal - 1 kg</li>
+            <li>Oil - 1 liter</li>
+            <li>Tea - 250 grams</li>
+            <li>Milk - 1 liter</li>
+            <li>Onion - 1 kg</li>
+            <li>Potato - 1 kg</li>
+        </ul>
+    </div>
+
+    <div class="option">
+        <h2>Online Donation Option</h2>
+        <p>Users can donate commodities online through a donation portal or by scanning a QR code.</p>
+        <ul>
+            <li><a href="#" onclick="showDonationBox()">Donate Commodities Online</a></li>
+            <li><a href="#" onclick="showDonatedList()">View Donated List</a></li>
+            <li><a href="#">Scan QR Code to Donate</a></li>
+        </ul>
+    </div>
+
+    <!-- Donation box -->
+    <div class="donation-box" id="donationBox">
+        <span class="close-btn" onclick="closeDonationBox()">x</span>
+        <h3>Donate Commodities</h3>
+        <form id="donationForm">
+            <!-- Donation options will be dynamically generated here -->
+        </form>
+        <button class="donate-btn" onclick="submitDonation()">Donate</button>
+        <p>Thank you for your donation!</p>
+    </div>
+
+    <!-- Message box -->
+    <div class="message-box" id="messageBox">
+        <h3>Donation Successful!</h3>
+    </div>
+
+    <!-- Donated list -->
+    <div class="donated-list" id="donatedList" style="display: none;">
+        <span class="close-btn" onclick="closeDonatedList()">x</span>
+        <h3>Donated List</h3>
+        <ul id="donatedItems">
+            <!-- Donated items will be dynamically added here -->
+        </ul>
+    </div>
+
+    <script>
+        // Available commodities
+        var availableCommodities = [
+            { name: "Rice", quantity: 5 },
+            { name: "Wheat", quantity: 2 },
+            { name: "Sugar", quantity: 1 },
+            { name: "Salt", quantity: 1 },
+            { name: "Dal", quantity: 1 },
+            { name: "Oil", quantity: 1 },
+            { name: "Tea", quantity: 0.25 },
+            { name: "Milk", quantity: 1 },
+            { name: "Onion", quantity: 1 },
+            { name: "Potato", quantity: 1 }
+        ];
+
+        // Donated items
+        var donatedItems = [];
+
+        // Function to show commodity box
+        function showCommodityBox() {
+            document.getElementById("commodityBox").style.display = "block";
+        }
+
+        // Function to close commodity box
+        function closeCommodityBox() {
+            document.getElementById("commodityBox").style.display = "none";
+        }
+
+        // Function to show donation box
+        function showDonationBox() {
+            document.getElementById("donationBox").style.display = "block";
+            generateDonationOptions();
+        }
+
+        // Function to close donation box
+        function closeDonationBox() {
+            document.getElementById("donationBox").style.display = "none";
+        }
+
+        // Function to close donated list
+        function closeDonatedList() {
+            document.getElementById("donatedList").style.display = "none";
+        }
+
+        // Function to dynamically generate donation options
+       // Function to dynamically generate donation options
+function generateDonationOptions() {
+    var donationForm = document.getElementById("donationForm");
+    donationForm.innerHTML = ""; // Clear previous options
+    availableCommodities.forEach(function(commodity) {
+        var label = document.createElement("label");
+        label.textContent = commodity.name + ":";
+        var select = document.createElement("select");
+        select.name = commodity.name.toLowerCase();
+        for (var i = 0; i <= commodity.quantity; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.textContent = i + " kg";
+            select.appendChild(option);
+        }
+        donationForm.appendChild(label);
+        donationForm.appendChild(select);
+    });
+}
+
+
+        // Function to submit donation
+       // Function to submit donation
+function submitDonation() {
+    var donationForm = document.getElementById("donationForm");
+    var formData = new FormData(donationForm);
+    var donationDetails = '';
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+        if (pair[1] > 0) {
+            donatedItems.push(pair[1] + " kg " + pair[0]);
+        }
+    }
+    // Show message box after submission
+    document.getElementById("messageBox").style.display = "block";
+    // Close donation box after submission
+    closeDonationBox();
+    // Display donated list
+    showDonatedList();
+}
+
+
+        // Function to show donated list
+        function showDonatedList() {
+            var donatedList = document.getElementById("donatedList");
+            var list = document.getElementById("donatedItems");
+            list.innerHTML = ""; // Clear previous list
+            donatedItems.forEach(function(item) {
+                var li = document.createElement("li");
+                li.textContent = item;
+                list.appendChild(li);
+            });
+            donatedList.style.display = "block";
+        }
+    </script>
+</body>
+</html>

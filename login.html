@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+        .show-password {
+            position: relative;
+        }
+        .show-password input[type="checkbox"] {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        .show-password input[type="checkbox"]::before {
+            content: '\1F441';
+            font-size: 18px;
+            color: #999;
+        }
+        .show-password input[type="checkbox"]:checked::before {
+            content: '\1F440';
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post" action="main_motive.html" target="_blank">
+            <label for="ration_number">Ration Number:</label>
+            <input type="text" id="ration_number" name="ration_number" pattern="[0-9]*" title="Please enter only numbers" required>
+            <label for="password">Password:</label>
+            <div class="show-password">
+                <input type="password" id="password" name="password" required>
+                <input type="checkbox" id="showPassword">
+            </div>
+            <label><input type="checkbox" name="remember_me"> Remember Me</label>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <script>
+        // JavaScript to toggle password visibility
+        const passwordField = document.getElementById("password");
+        const showPasswordCheckbox = document.getElementById("showPassword");
+        showPasswordCheckbox.addEventListener("change", function() {
+            if (this.checked) {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        });
+    </script>
+</body>
+</html>
